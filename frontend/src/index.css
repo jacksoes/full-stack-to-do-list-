@@ -1,0 +1,14 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.page-container{
+  height: 100dvh;
+  width: 100dvw;
+  display: flex;
+}

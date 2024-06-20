@@ -1,0 +1,30 @@
+.side-bar{
+  flex: 0 0 15%;
+
+
+  background-color: #7851A9;
+
+}
+
+.main-content{
+ 
+
+  flex: 0 0 85%;
+
+  background-color: #333333;
+}
+
+.modern-button{
+  width: 100%;
+  background: none;
+  border: none;
+  
+}
+
+.modern-button:hover{
+  background-color: aquamarine;
+}
+
+.padding1rem{
+  padding: 1rem;
+}
