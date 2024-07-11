@@ -1,0 +1,13 @@
+-A dev dependency can be install like so: npm i --save-dev nodemon or npm i nodemon -D
+a regular dependency is used in the program for functionality while a dev
+depency is used in the development phase These typically include 
+tools and utilities that help in development, testing, and building the application.
+
+-CONNECTING TO MONGO DB DATABASE
+* create database on mongodb
+* install drivers
+* obtain the URI adress for the database
+
+
+-when to use urlencoded?
+ur encoded can be used to pass characters that are invalid for a url like < > or spaces.

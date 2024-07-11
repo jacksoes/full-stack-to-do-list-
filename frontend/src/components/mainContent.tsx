@@ -1,14 +1,7 @@
 import Container from "react-bootstrap/Container";
+import AddForm from "./add";
 
 export default function MainContent({ selectedOption }) {
-  function Add({ title }) {
-    return (
-      <div>
-        <h1 className="content-title">{title}</h1>
-      </div>
-    );
-  }
-
   function Today({ title }) {
     return (
       <div>
@@ -41,11 +34,15 @@ export default function MainContent({ selectedOption }) {
     );
   }
 
-  let content;
 
+
+
+
+  let content;
+  
   switch (selectedOption) {
     case "add":
-      content = <Add title={selectedOption} />;
+      content = <AddForm />;
       break;
     case "today":
       content = <Today title={selectedOption} />;
@@ -61,11 +58,17 @@ export default function MainContent({ selectedOption }) {
       break;
     default:
       content = <div></div>;
+
+   
   }
 
   return (
-    <div className="main-content">
-      <Container className="d-flex justify-content-center">{content}</Container>
-    </div>
+    <>
+      <div className="main-content d-flex justify-content-center align-items-center">
+        <Container  className="d-flex justify-content-center">
+          {content}
+        </Container>
+      </div>
+    </>
   );
 }

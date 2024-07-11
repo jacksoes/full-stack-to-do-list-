@@ -4,7 +4,7 @@ import Col from "react-bootstrap/Col";
 import React from "react";
 
 export default function sideBar({ onButtonClick, login, handleLogIn }) {
-  const options: string[] = ["add", "today", "upcoming", "search", "inbox"];
+  const options: string[] = ["add", "today", "upcoming", "search", "completed", "inbox"];
 
   function ProfileSection() {
     return (
