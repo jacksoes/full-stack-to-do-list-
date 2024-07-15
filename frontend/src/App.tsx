@@ -20,7 +20,7 @@ const App: React.FC = () => {
   type optionType = "search" | "inbox" | "to do";
 
   const setContent = (optionSelected: optionType) => {
-    console.log(optionSelected);
+    
     setSelectedButton(optionSelected);
 
 

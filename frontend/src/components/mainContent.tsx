@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container";
-import AddForm from "./add";
+import AddContent from "./add";
 
 export default function MainContent({ selectedOption }) {
   function Today({ title }) {
@@ -33,13 +33,24 @@ export default function MainContent({ selectedOption }) {
       </div>
     );
   }
+  const sidebarMapping = {
+    add: AddContent,
+  };
 
-
-
-
-
-  let content;
   
+
+  let Content = () => {
+    return <div> error not found</div>;
+  };
+
+  Content =
+    sidebarMapping[selectedOption] ||
+    (() => {
+      return <div>ERRor page not found</div>;
+    });
+
+  //let content = sidebarMapping[add]
+  /*
   switch (selectedOption) {
     case "add":
       content = <AddForm />;
@@ -58,16 +69,23 @@ export default function MainContent({ selectedOption }) {
       break;
     default:
       content = <div></div>;
+  */
 
-   
-  }
+  //}
 
   return (
     <>
-      <div className="main-content d-flex justify-content-center align-items-center">
-        <Container  className="d-flex justify-content-center">
-          {content}
-        </Container>
+      <div className="main-content">
+      <div className="d-flex justify-content-center content-title">
+              <h1>{selectedOption}</h1>
+            </div>
+            
+            
+            <Content />
+            
+            
+          
+        
       </div>
     </>
   );

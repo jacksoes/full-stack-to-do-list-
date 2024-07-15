@@ -1,7 +1,5 @@
 .side-bar{
   flex: 0 1 15%;
-
-
   background-color: #7851A9;
 
   display: flex;
@@ -12,7 +10,7 @@
 .main-content{
  
 
-  flex: 0 0 85%;
+  flex: 0 1 85%;
 
   background-color: #333333;
 }
@@ -26,6 +24,7 @@
 
 .modern-button:hover{
   background-color: #ffc107;
+
 }
 
 .padding1rem{
@@ -51,5 +50,29 @@
 
 .smooth-form{
   
+
+}
+
+.testin{
+  background-color: orange;
+}
+
+.crest{
+  width: 100%;
+}
+
+
+.results{
+  color: #7851A9;
+  border: 2px #7851A9 solid;
+  padding: 2rem;
+  font-weight: bold;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
+  0 6px 20px 0 rgba(0, 0, 0, 0.19),
+  0 -4px 8px 0 rgba(0, 0, 0, 0.2),
+  0 -6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.results-item{
 
 }
