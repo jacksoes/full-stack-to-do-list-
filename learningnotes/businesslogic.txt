@@ -1,0 +1,19 @@
+Business logic determines how data can be created, stored, and changed 
+depending on the businesses goals.
+
+business logic can consist of
+
+VALIDATION - logic must meet certain criteria depending on business goals.
+ex: the user must enter a valid due-date, which cannot be prior to the current date.
+
+AUTHORIZATION - certain users have certain permissions.
+ex: users can save tasks to a database, guests cannot save tasks to database only to the DOM
+
+BUSINESS RULES - business logic that applies to a certain business domain.
+ex: user cannot enter a task without a title.
+
+DATA TRANSFORMATION - calculations performed with data.
+ex: the users total is computated at checkout.
+
+CONSISTENCY CHECKS - makes sure the data adheres to constraints.
+ex: the user cannot store more than 999 tasks; if tasks > 999 then ....

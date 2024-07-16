@@ -1,5 +1,5 @@
 import Container from "react-bootstrap/Container";
-import AddContent from "./add";
+import AddContent from "./AddContent";
 
 export default function MainContent({ selectedOption }) {
   function Today({ title }) {

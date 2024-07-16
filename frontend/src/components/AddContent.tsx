@@ -6,16 +6,14 @@ import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
 export default function AddContent() {
-  function AddForm() {
-    const [tasks, setTasks] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
-    const onSubmit = (event) => {
+  function AddForm() {
+    const addTask = (event) => {
       event.preventDefault();
       const taskInput = event.target[0].value;
       const dateInput = event.target[1].value;
       const importantInput = event.target[2].value;
-
-      //console.log("tasks: ", tasks)
 
       setTasks([
         ...tasks,
@@ -28,10 +26,12 @@ export default function AddContent() {
       console.log("your tasks are: ", tasks);
     };
 
+   
+
     return (
       <>
         <Container className="d-flex justify-content-center crest">
-          <Form className="test" onSubmit={onSubmit}>
+          <Form className="test" onSubmit={addTask}>
             <Form.Group className="mb-3" controlId="Task">
               <Form.Label>Task:</Form.Label>
               <Form.Control type="text" placeholder="Enter task" />
@@ -55,25 +55,33 @@ export default function AddContent() {
   }
 
   function Results() {
-    return (
-      <Container className="results mt-5">
+
+    const removeTask = (index) =>{
+      console.log(index)
+
+      setTasks(t => t.filter((_, i) => i !== index))
+    }
+    const resultsMapping = tasks.map((result, index) => (
+      <Container key={index} className="results mt-5">
         <Row className="results-item">
           <Col xxl={4} xs={9}>
-            walk the dog
+            task: {result.task}
           </Col>
           <Col xxl={2} xs={3}>
-            7/15/24
+            due date: {result.date}
           </Col>
           <Col xxl={1} xs={4}>
-            important : true
+            {result.important}
           </Col>
-          <Col xxl={2} xs={6}></Col>
-          <Col xxl={3} xs={2}>
-            del
+          <Col xxl={2} xs={5}></Col>
+          <Col xxl={3} xs={3}>
+            <Button className="btn-danger" onClick={(e) => {removeTask(index)}}>DEL</Button>
           </Col>
         </Row>
       </Container>
-    );
+    ));
+
+    return <>{resultsMapping}</>;
   }
 
   return (
