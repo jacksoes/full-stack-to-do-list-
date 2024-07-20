@@ -23,6 +23,25 @@ export default function AddContent() {
           important: importantInput,
         },
       ]);
+
+      fetch("http://localhost:3000/api", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          task: taskInput,
+          date: dateInput,
+          important: importantInput,
+        }),
+      })
+        .then((response) => response)
+        .then((data) => {
+          console.log("Success:", data);
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
       console.log("your tasks are: ", tasks);
     };
 
@@ -62,7 +81,7 @@ export default function AddContent() {
       setTasks(t => t.filter((_, i) => i !== index))
     }
     const resultsMapping = tasks.map((result, index) => (
-      <Container key={index} className="results mt-5">
+      <Container key={index} className="results mt-2">
         <Row className="results-item">
           <Col xxl={4} xs={9}>
             task: {result.task}

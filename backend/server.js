@@ -1,70 +1,45 @@
-const express = require("express");
+import express from "express";
+import taskrouter from "./routes/task.routes.js";
+import middleWare from "./middleware.js";
+import {connectDatabase} from "./database.js";
+
+connectDatabase();
 const app = express();
-const cors = require("cors");
-const { MongoClient } = require("mongodb");
-
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({extended: true}))
+middleWare(app);
+app.use("/", taskrouter);
 
 
-let groceryList = [
-    {
-        fruit: "orange",
-        quantity: 6
-    },
-    {
-        fruit: "pineapple",
-        quantity: 4
-    }
-]
-
-
-app.post ("/api", function(req, res){
-    console.log(req.body)
-    groceryList.push(req.body)
-    res.sendStatus(201)
-})
-
-
-app.get ("/api", function(req, res){
-    res.json(groceryList)
-})
 
 /*
+app.post("/api", async function (req, res) {
+  //console.log(req.body)
+  //groceryList.push(req.body)
+  //console.log(groceryList)
+  //res.sendStatus(201)
+  //console.log("sucesser!")
 
-const MONGO_URI =
-  "mongodb+srv://jsoesman1:pP99fWwkCQ7NQjjb@tasks.45pk8op.mongodb.net/?retryWrites=true&w=majority&appName=tasks";
-const client = new MongoClient(MONGO_URI);
-let database;
-let tasksCollection;
-async function connect() {
+  const newTask = req.body;
   try {
-    await client.connect();
-    console.log("Connected to MongoDB");
-    database = client.db("taskDatabase");
-    tasksCollection = database.collection("taskCollection");
-
-    // Perform operations using database variable
-  } catch (error) {
-    console.error("Error connecting to MongoDB", error);
+    //const result = await tasksCollection.insertOne(newTask)
+    const result = await tasksCollection.deleteMany({ task: "" });
+    console.log("sucess!");
+    res.status(201).send("its running");
+  } catch (err) {
+    console.error("error loadin task:", err);
+    res.status(500).send("server error");
   }
-}
-connect();
+});
 
 // whenever the user makes an https request to the port 3000, the following code runs
-app.get("/", function (req, res) {
-  res.json({ testJson: "this is the test thingy" });
-  /*
+app.get("/", async function (req, res) {
   try {
     const tasks = await tasksCollection.find().toArray();
     res.json(tasks);
   } catch (err) {
     console.error("Error fetching tasks:", err);
     res.status(500).send("Server Error");
-  }*/
-//});
-
+  }
+});
 
 /*
 app.get("/add", function (req, res) {});

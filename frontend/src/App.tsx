@@ -20,28 +20,9 @@ const App: React.FC = () => {
   type optionType = "search" | "inbox" | "to do";
 
   const setContent = (optionSelected: optionType) => {
-    
     setSelectedButton(optionSelected);
 
-
-    /*
-    fetch("http://localhost:3000/api", {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        name: "jack",
-        age: 15
-      })
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('Success:', data);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });*/
+    
   };
 
   const handleLogIn = () => {
