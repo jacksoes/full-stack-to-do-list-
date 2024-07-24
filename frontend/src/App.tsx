@@ -4,25 +4,10 @@ import SideBar from "./components/sideBar";
 import MainContent from "./components/mainContent";
 
 const App: React.FC = () => {
-  const [data, setData] = useState();
-
-  /*
-  useEffect(() => {
-    fetch("http://localhost:3000/")
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) => console.error("error!!!", error));
-  });
-  */
-
   type optionType = "search" | "inbox" | "to do";
 
   const setContent = (optionSelected: optionType) => {
     setSelectedButton(optionSelected);
-
-    
   };
 
   const handleLogIn = () => {

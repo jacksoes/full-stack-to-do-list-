@@ -1,14 +1,13 @@
-import { taskController } from "../controllers/task.controller.js"
+import { taskGetController, taskAddController, taskDeleteController } from "../controllers/task.controller.js"
 import express from "express";
 const router = express.Router()
 
 
-//router.post ("/task", (req, res) =>{
 
-//})
+router.get("/task", taskGetController)
 
-
-router.get("/task", taskController)
+router.post("/task", taskAddController)
+router.post("/taskRemove", taskDeleteController)
 
 
 export default router;

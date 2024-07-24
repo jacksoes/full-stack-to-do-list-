@@ -1,4 +1,5 @@
 import Container from "react-bootstrap/Container";
+import { useState, useEffect } from "react";
 
 import AddContent from "./side bar options/AddContent";
 import TodayComponent from "./side bar options/TodayComponent";
@@ -17,6 +18,17 @@ export default function MainContent({ selectedOption }) {
     inbox: InboxComponent,
   };
 
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/task")
+      .then((response) => response.json())
+      .then((data) => {
+        setData(data);
+      })
+      .catch((error) => console.error("error retrieving tasks to mainComponent:", error));
+  });
+
   let Content = () => {
     return <div> error not found</div>;
   };
@@ -33,7 +45,7 @@ export default function MainContent({ selectedOption }) {
         <div className="d-flex justify-content-center content-title">
           <h1>{selectedOption}</h1>
         </div>
-        <Content />
+        <Content setData={setData} data={data} />
       </div>
     </>
   );

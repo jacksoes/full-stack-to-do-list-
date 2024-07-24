@@ -5,7 +5,7 @@ const middleWare = (app) => {
   console.log("middle ware running");
   app.use(cors());
   app.use(express.json());
-  app.use(express.urlencoded({ extended: true }));
+  //app.use(express.urlencoded({ extended: true }));
 };
 
 export default middleWare;
