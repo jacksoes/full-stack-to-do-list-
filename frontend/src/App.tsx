@@ -31,7 +31,7 @@ const App: React.FC = () => {
     <>
       <div className="page-container-flex-100">
         <SideBar
-          onButtonClick={setContent}
+          setSelectedContent={setContent}
           handleLogIn={handleLogIn}
           login={isLoggedIn}
         />

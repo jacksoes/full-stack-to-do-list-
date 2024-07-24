@@ -2,30 +2,8 @@ import { useEffect, useState } from "react";
 
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-export default function UpcomingComponent({ setData, data }) {
-  const removeTask = (index) => {
-    setData((d) => d.filter((_, i) => i !== index));
-    console.log(JSON.stringify({
-        task: data[index].task,
-        date: data[index].date,
-        important: data[index].important,
-      }))
-
-    fetch("http://localhost:3000/taskRemove", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        task: data[index].task,
-        date: data[index].date,
-        important: data[index].important,
-      }),
-    })
-      .then((response) => console.log(response))
-      .then((data) => console.log(data))
-      .catch((err) => console.log(err));
-  };
+export default function UpcomingComponent({ data, removeData, handleUpdate}) {
+   
 
   const resultsMapping = data.map((result, index) => (
     <Container key={index} className="results mt-2">
@@ -44,7 +22,7 @@ export default function UpcomingComponent({ setData, data }) {
           <Button
             className="btn-danger"
             onClick={(e) => {
-              removeTask(index);
+              removeData(index);
             }}
           >
             DEL

@@ -1,10 +1,18 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+import { useState } from "react";
 
-
-export default function sideBar({ onButtonClick, login, handleLogIn }) {
-  const options: string[] = ["add", "today", "upcoming", "search", "completed", "inbox"];
+export default function sideBar({ setSelectedContent, login, handleLogIn }) {
+  const options: string[] = [
+    "add",
+    "today",
+    "upcoming",
+    "search",
+    "completed",
+    "inbox",
+  ];
+  const [highlightedChoice, setHighlightedChoice] = useState(-1);
 
   function ProfileSection() {
     return (
@@ -31,12 +39,16 @@ export default function sideBar({ onButtonClick, login, handleLogIn }) {
     );
   }
 
-  
-
-  function SideBarOptions({ options}) {
+  function SideBarOptions({ options }) {
     return options.map((option: string, index: number) => (
       <Row>
-        <button className="modern-button padding1rem" onClick={() => onButtonClick(option)} >
+        <button
+          className={`modern-button padding1rem ${highlightedChoice === index ? "selected" : ""}`}
+          onClick={() => {
+            setSelectedContent(option);
+            setHighlightedChoice(index);
+          }}
+        >
           <Col className="d-flex justify-content-center" key={index}>
             {option}
           </Col>
@@ -45,10 +57,10 @@ export default function sideBar({ onButtonClick, login, handleLogIn }) {
     ));
   }
 
-  function LogInSection({logInOption}) {
+  function LogInSection({ logInOption }) {
     return (
       <Row className="d-flex align-items-end">
-        <button className="modern-button" onClick = {() => handleLogIn()}>
+        <button className="modern-button" onClick={() => handleLogIn()}>
           <Col>{logInOption}</Col>
         </button>
       </Row>
@@ -56,14 +68,12 @@ export default function sideBar({ onButtonClick, login, handleLogIn }) {
   }
 
   let profileSec = <> </>;
-  let loginSec =<LogInSection logInOption="log in" />
+  let loginSec = <LogInSection logInOption="log in" />;
 
-  if (login)
-    {
-    profileSec = <ProfileSection />
-    loginSec = <LogInSection logInOption="log out" />
-    }
-
+  if (login) {
+    profileSec = <ProfileSection />;
+    loginSec = <LogInSection logInOption="log out" />;
+  }
 
   return (
     <div className="side-bar">

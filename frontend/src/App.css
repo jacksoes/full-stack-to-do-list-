@@ -1,78 +1,62 @@
-.side-bar{
+.side-bar {
   flex: 0 1 15%;
-  background-color: #7851A9;
+  background-color: #7851a9;
 
   display: flex;
   flex-direction: column;
-
 }
 
-.main-content{
- 
-
+.main-content {
   flex: 0 1 85%;
 
   background-color: #333333;
 }
 
-.modern-button{
+.modern-button {
   width: 100%;
   background: none;
   border: none;
-  
 }
 
-.modern-button:hover{
+.modern-button:hover {
   background-color: #ffc107;
-
 }
 
-.padding1rem{
+.padding1rem {
   padding: 1rem;
 }
 
-
-
-.flex-grow95{
-  flex-grow: .95;
+.flex-grow95 {
+  flex-grow: 0.95;
 }
 
-.content-title{
-  color: #7851A9;
+.content-title {
+  color: #7851a9;
   margin: 2rem;
 }
 
-.test{
-  background-color:#7851A9;
+.form-buffer {
+  background-color: #7851a9;
   padding: 2rem;
   border-radius: 1rem;
 }
 
-.smooth-form{
-  
-
-}
-
-.testin{
-  background-color: orange;
-}
-
-.crest{
+.crest {
   width: 100%;
 }
 
-
-.results{
-  color: #7851A9;
-  border: 2px #7851A9 solid;
+.results {
+  color: #7851a9;
+  border: 2px #7851a9 solid;
   padding: 1rem;
   font-weight: bold;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 
-  0 6px 20px 0 rgba(0, 0, 0, 0.19),
-  0 -4px 8px 0 rgba(0, 0, 0, 0.2),
-  0 -6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19),
+    0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.results-item{
+.results-item {
+}
 
+.selected {
+  background-color: #ffc107;
 }

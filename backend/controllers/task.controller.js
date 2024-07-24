@@ -3,8 +3,7 @@ import { tasksCollection } from "../database.js";
 export const taskGetController = async (req, res) => {
   try {
     const tasks = await tasksCollection.find().toArray();
-    res.status(201).json(tasks)
-    
+    res.status(201).json(tasks);
   } catch (err) {
     console.error("Error fetching tasks:", err);
     res.status(500).send("Server Error");

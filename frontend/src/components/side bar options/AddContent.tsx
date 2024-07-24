@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-export default function AddContent({data}) {
+export default function AddContent({ data, removeData, handleUpdate }) {
   const [tasks, setTasks] = useState([]);
 
   function AddForm() {
@@ -38,6 +38,7 @@ export default function AddContent({data}) {
         .then((response) => response)
         .then((data) => {
           console.log("Success:", data);
+          handleUpdate();
         })
         .catch((error) => {
           console.error("Error:", error);
@@ -48,7 +49,7 @@ export default function AddContent({data}) {
     return (
       <>
         <Container className="d-flex justify-content-center crest">
-          <Form className="test" onSubmit={addTask}>
+          <Form className="form-buffer" onSubmit={addTask}>
             <Form.Group className="mb-3" controlId="Task">
               <Form.Label>Task:</Form.Label>
               <Form.Control type="text" placeholder="Enter task" />
@@ -73,23 +74,10 @@ export default function AddContent({data}) {
 
   function Results() {
     const removeTask = (index) => {
-      setTasks((t) => t.filter((_, i) => i !== index));
-
-      fetch("http://localhost:3000/taskRemove", {
-        method: "POST",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          task: tasks[index].task,
-          date: tasks[index].date,
-          important: tasks[index].important,
-        }),
-      })
-        .then((response) => console.log(response))
-        .then((data) => console.log(data))
-        .catch((err) => console.log(err));
+      setTasks((t) => t.filter((_, i) => i != index));
+      handleUpdate();
     };
+
     const resultsMapping = tasks.map((result, index) => (
       <Container key={index} className="results mt-2">
         <Row className="results-item">
@@ -107,6 +95,7 @@ export default function AddContent({data}) {
             <Button
               className="btn-danger"
               onClick={(e) => {
+                removeData(index);
                 removeTask(index);
               }}
             >

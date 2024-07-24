@@ -19,6 +19,11 @@ export default function MainContent({ selectedOption }) {
   };
 
   const [data, setData] = useState([]);
+  const [updateTrigger, setUpdateTrigger] = useState(0);
+
+  const handleUpdate = () => {
+    setUpdateTrigger((prev) => prev + 1);
+  };
 
   useEffect(() => {
     fetch("http://localhost:3000/task")
@@ -26,8 +31,32 @@ export default function MainContent({ selectedOption }) {
       .then((data) => {
         setData(data);
       })
-      .catch((error) => console.error("error retrieving tasks to mainComponent:", error));
-  });
+      .catch((error) =>
+        console.error("error retrieving tasks to mainComponent:", error)
+      );
+  }, [updateTrigger]);
+
+  const removeData = (index) => {
+    setData((d) => d.filter((_, i) => i !== index));
+
+    fetch("http://localhost:3000/taskRemove", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        task: data[index].task,
+        date: data[index].date,
+        important: data[index].important,
+      }),
+    })
+      .then((response) => console.log(response))
+      .then((data) => {
+        console.log(data);
+        handleUpdate();
+      })
+      .catch((err) => console.log(err));
+  };
 
   let Content = () => {
     return <div> error not found</div>;
@@ -45,7 +74,11 @@ export default function MainContent({ selectedOption }) {
         <div className="d-flex justify-content-center content-title">
           <h1>{selectedOption}</h1>
         </div>
-        <Content setData={setData} data={data} />
+        <Content
+          removeData={removeData}
+          data={data}
+          handleUpdate={handleUpdate}
+        />
       </div>
     </>
   );
