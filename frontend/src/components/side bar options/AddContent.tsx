@@ -14,6 +14,7 @@ export default function AddContent({ data, removeData, handleUpdate }) {
       const taskInput = event.target[0].value;
       const dateInput = event.target[1].value;
       const importantInput = event.target[2].value;
+      console.log(event)
 
       setTasks([
         ...tasks,
