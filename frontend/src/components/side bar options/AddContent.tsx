@@ -9,12 +9,18 @@ export default function AddContent({ data, removeData, handleUpdate }) {
   const [tasks, setTasks] = useState([]);
 
   function AddForm() {
+    const [checked, setChecked] = useState(false);
+
+    const handleCheck = (event) => {
+      setChecked(event.target.checked);
+    };
+
     const addTask = (event) => {
       event.preventDefault();
+
       const taskInput = event.target[0].value;
       const dateInput = event.target[1].value;
-      const importantInput = event.target[2].value;
-      console.log(event)
+      const importantInput = checked.toString();
 
       setTasks([
         ...tasks,
@@ -62,7 +68,12 @@ export default function AddContent({ data, removeData, handleUpdate }) {
               <Form.Control type="date" placeholder="" />
             </Form.Group>
             <Form.Group className="mb-3" controlId="deadline">
-              <Form.Check type="checkbox" label="important" />
+              <Form.Check
+                type="checkbox"
+                label="important"
+                checked={checked}
+                onChange={handleCheck}
+              />
             </Form.Group>
             <Button variant="warning" type="submit">
               Submit
@@ -89,7 +100,7 @@ export default function AddContent({ data, removeData, handleUpdate }) {
             due date: {result.date}
           </Col>
           <Col xxl={1} xs={4}>
-            {result.important}
+            important: {result.important}
           </Col>
           <Col xxl={2} xs={5}></Col>
           <Col xxl={3} xs={3}>

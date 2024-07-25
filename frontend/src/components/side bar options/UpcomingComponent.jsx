@@ -15,7 +15,7 @@ export default function UpcomingComponent({ data, removeData, handleUpdate}) {
           due date: {result.date}
         </Col>
         <Col xxl={1} xs={4}>
-          {result.important}
+        important: {result.important}
         </Col>
         <Col xxl={2} xs={5}></Col>
         <Col xxl={3} xs={3}>
