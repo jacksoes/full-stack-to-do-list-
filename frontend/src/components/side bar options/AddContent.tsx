@@ -91,7 +91,7 @@ export default function AddContent({ data, removeData, handleUpdate }) {
     };
 
     const resultsMapping = tasks.map((result, index) => (
-      <Container key={index} className="results mt-2">
+      <Container key={index} className={`results mt-2 ${result.important === "true" ? "red-border" : "purple-border" }`}>
         <Row className="results-item">
           <Col xxl={4} xs={9}>
             task: {result.task}
