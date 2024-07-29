@@ -1,14 +1,22 @@
 import express from "express";
 import taskrouter from "./routes/task.routes.js";
 import middleWare from "./middleware.js";
-import {connectDatabase} from "./database.js";
+import { connectDatabase } from "./database.js";
 
-connectDatabase();
 const app = express();
 middleWare(app);
-app.use("/", taskrouter);
 
+async function startServer(app) {
+  connectDatabase()
+    .then(() => {
+      app.use("/", taskrouter);
+    })
+    .catch((error) => {
+      console.error("failed to connect", error);
+    });
+}
 
+startServer(app);
 
 /*
 app.post("/api", async function (req, res) {
