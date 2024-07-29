@@ -19,6 +19,14 @@ export default function MainContent({ selectedOption }) {
   };
 
   const [data, setData] = useState([]);
+
+  function sortByDate(objArr) {
+    const sortedData = objArr.sort(
+      (a, b) => new Date(a.date) - new Date(b.date)
+    );
+    return sortedData;
+  }
+
   const [updateTrigger, setUpdateTrigger] = useState(0);
 
   const handleUpdate = () => {
@@ -68,6 +76,7 @@ export default function MainContent({ selectedOption }) {
       return <div>ERRor page not found</div>;
     });
 
+  const sortedData = sortByDate(data);
   return (
     <>
       <div className="main-content">
@@ -76,7 +85,7 @@ export default function MainContent({ selectedOption }) {
         </div>
         <Content
           removeData={removeData}
-          data={data}
+          data={sortedData}
           handleUpdate={handleUpdate}
         />
       </div>
