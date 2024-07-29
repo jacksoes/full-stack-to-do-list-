@@ -10,7 +10,7 @@ export default function sideBar({ setSelectedContent, login, handleLogIn }) {
     "upcoming",
     "search",
     "completed",
-    "inbox",
+    "important",
   ];
   const [highlightedChoice, setHighlightedChoice] = useState(-1);
 

@@ -6,7 +6,7 @@ import TodayComponent from "./side bar options/TodayComponent";
 import UpcomingComponent from "./side bar options/UpcomingComponent";
 import SearchComponent from "./side bar options/SearchComponent";
 import CompletedComponent from "./side bar options/CompletedComponent";
-import InboxComponent from "./side bar options/InboxComponent";
+import ImportantComponent from "./side bar options/importantComponent";
 
 export default function MainContent({ selectedOption }) {
   const sidebarMapping = {
@@ -15,7 +15,7 @@ export default function MainContent({ selectedOption }) {
     upcoming: UpcomingComponent,
     search: SearchComponent,
     completed: CompletedComponent,
-    inbox: InboxComponent,
+    important: ImportantComponent,
   };
 
   const [data, setData] = useState([]);
