@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
-export default function AddContent({ data, removeData, handleUpdate }) {
+export default function AddContent({ removeData, handleUpdate }) {
   const [tasks, setTasks] = useState([]);
 
   function AddForm() {

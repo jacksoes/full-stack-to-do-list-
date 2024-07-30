@@ -6,19 +6,29 @@ import { connectDatabase } from "./database.js";
 const app = express();
 middleWare(app);
 
+
 async function startServer(app) {
-  connectDatabase()
-    .then(() => {
-      app.use("/", taskrouter);
-    })
-    .catch((error) => {
-      console.error("failed to connect", error);
-    });
+  await connectDatabase()
+  app.use("/", taskrouter);
 }
+
 
 startServer(app);
 
-/*
+
+
+
+/* example notes:
+async function startServer(app) {
+  
+    await connectDatabase()
+    .then(() => {
+       app.use("/", taskrouter)
+       
+})
+    .catch((error) => { console.log(error)})
+}
+
 app.post("/api", async function (req, res) {
   //console.log(req.body)
   //groceryList.push(req.body)
@@ -62,4 +72,5 @@ app.get("/inbox", function (req, res) {});
 
 
 */
-app.listen(3000);
+
+app.listen(3000); 

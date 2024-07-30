@@ -1,0 +1,11 @@
+-use unique id for key instead of index.
+
+-Use PascalCase for filenames. E.g., ReservationCard.jsx.
+
+- improve object destructuring
+
+! - do not have all the css on one file, use css for each component to maximize reusability.
+
+! - limit one component per file, and make code into components that should be such as datamapping. 
+
+! - ORGANIZE DIRECTORY, RESUABLE COMPONENTS SHOULD HAVE OWN CSS, NON-REUSABLE CSS SHOULD BE IN APP.CSS? INDEX.CSS SHOULD HAVE STYLING THAT APPLIES TO ALL.

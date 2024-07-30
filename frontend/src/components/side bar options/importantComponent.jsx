@@ -1,5 +1,38 @@
-export default function ImportantComponent () {
-    return (
-        <div>important placeholder</div>
-    )
+import { Container, Row, Col, Button } from "react-bootstrap";
+export default function ImportantComponent({ data, removeData }) {
+  const filteredDataImportant = data.filter((d) => d.important === "true");
+
+  const resultsMapping = filteredDataImportant.map((result, index) => (
+    <Container
+      key={index}
+      className={`results mt-2 ${
+        result.important === "true" ? "red-border" : "purple-border"
+      }`}
+    >
+      <Row className="results-item">
+        <Col xxl={4} xs={9}>
+          task: {result.task}
+        </Col>
+        <Col xxl={2} xs={3}>
+          due date: {result.date}
+        </Col>
+        <Col xxl={1} xs={4}>
+          important: {result.important}
+        </Col>
+        <Col xxl={2} xs={5}></Col>
+        <Col xxl={3} xs={3}>
+          <Button
+            className="btn-danger"
+            onClick={(e) => {
+              removeData(index);
+            }}
+          >
+            DEL
+          </Button>
+        </Col>
+      </Row>
+    </Container>
+  ));
+
+  return <>{resultsMapping}</>;
 }

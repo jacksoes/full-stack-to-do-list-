@@ -1,6 +1,6 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 
-export default function TodayComponent({ data, removeData, handleUpdate }) {
+export default function TodayComponent({ data, removeData }) {
   function checkDateToday(dataItem) {
     const dataItemDate = new Date(dataItem.date);
     const dateToday = new Date();
