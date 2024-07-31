@@ -1,5 +1,7 @@
 import SearchBar from "../search bar/SearchBar";
 import DisplayData from "../display data/DisplayData";
+import { Container, Row, Col, Button } from "react-bootstrap";
+
 import { useState, useEffect } from "react";
 
 export default function SearchComponent({ data, removeData }) {
