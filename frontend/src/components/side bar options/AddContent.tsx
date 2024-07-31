@@ -17,7 +17,7 @@ export default function AddContent({ removeData, handleUpdate }) {
 
     const addTask = (event) => {
       event.preventDefault();
-
+      
       const taskInput = event.target[0].value;
       const dateInput = event.target[1].value;
       const importantInput = checked.toString();

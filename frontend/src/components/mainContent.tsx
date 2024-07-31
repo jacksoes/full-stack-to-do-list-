@@ -71,7 +71,7 @@ export default function MainContent({ selectedOption }) {
   Content =
     sidebarMapping[selectedOption] ||
     (() => {
-      return <div>ERRor page not found</div>;
+      return <AddContent />;
     });
 
   const sortedData = sortByDate(data);
