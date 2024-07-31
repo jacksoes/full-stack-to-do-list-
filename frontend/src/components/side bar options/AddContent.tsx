@@ -5,8 +5,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
+import DisplayData from "../display data/DisplayData";
+
 export default function AddContent({ removeData, handleUpdate }) {
   const [tasks, setTasks] = useState([]);
+
+  const removeTask = (index) => {
+    setTasks((t) => t.filter((_, i) => i != index));
+    removeData(index);
+  };
 
   function AddForm() {
     const [checked, setChecked] = useState(false);
@@ -17,7 +24,7 @@ export default function AddContent({ removeData, handleUpdate }) {
 
     const addTask = (event) => {
       event.preventDefault();
-
+      
       const taskInput = event.target[0].value;
       const dateInput = event.target[1].value;
       const importantInput = checked.toString();
@@ -84,47 +91,12 @@ export default function AddContent({ removeData, handleUpdate }) {
     );
   }
 
-  function Results() {
-    const removeTask = (index) => {
-      setTasks((t) => t.filter((_, i) => i != index));
-      handleUpdate();
-    };
-
-    const resultsMapping = tasks.map((result, index) => (
-      <Container key={index} className={`results mt-2 ${result.important === "true" ? "red-border" : "purple-border" }`}>
-        <Row className="results-item">
-          <Col xxl={4} xs={9}>
-            task: {result.task}
-          </Col>
-          <Col xxl={2} xs={3}>
-            due date: {result.date}
-          </Col>
-          <Col xxl={1} xs={4}>
-            important: {result.important}
-          </Col>
-          <Col xxl={2} xs={5}></Col>
-          <Col xxl={3} xs={3}>
-            <Button
-              className="btn-danger"
-              onClick={(e) => {
-                removeData(index);
-                removeTask(index);
-              }}
-            >
-              DEL
-            </Button>
-          </Col>
-        </Row>
-      </Container>
-    ));
-
-    return <>{resultsMapping}</>;
-  }
+ 
 
   return (
     <>
       <AddForm />
-      <Results />
+      <DisplayData data={tasks} removeData={removeTask}  />
     </>
   );
 }

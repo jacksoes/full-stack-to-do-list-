@@ -1,0 +1,51 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100%;
+  padding: 0.5em;
+  position: relative;
+}
+
+.search-bar {
+  background-color: white;
+  box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.15);
+  border: 1px solid black;
+  display: flex;
+  border-radius: 30px;
+  padding: 0.5em;
+}
+
+.search-bar-input:focus {
+  outline: none;
+}
+
+.search-bar-input {
+  flex-grow: 1;
+  font-size: 1.5rem;
+  width: 100%;
+  padding: 0 0.5rem;
+  border: 0;
+}
+
+.search-bar-submit {
+  font-size: 1.5rem;
+  cursor: pointer;
+  border: 0;
+  background: transparent;
+  border-radius: 50%;
+  background: pink;
+  width: calc(2em - 0.5em);
+  height: calc(2em - 0.5em);
+}
+
+.search-bar:focus {
+  outline: 0;
+}
+
+/*
+https://www.youtube.com/watch?v=DonxmmWW7Tk&ab_channel=KevinPowell
+*/

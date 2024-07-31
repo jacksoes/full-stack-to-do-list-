@@ -1,10 +1,20 @@
 import SearchBar from "../search bar/SearchBar";
+import DisplayData from "../display data/DisplayData";
+import { useState, useEffect } from "react";
 
-export default function SearchComponent() {
+export default function SearchComponent({ data, removeData }) {
+
+    const [searchBarState, setSearchBarState] = useState("");
+    const [searchedData, setSearchedData ] = useState(data);
+
+    useEffect(() => {
+        setSearchedData(data.filter(d => d.task.indexOf(searchBarState) !== -1))
+    }, [searchBarState])
+
   return (
     <>
-      <SearchBar />
-      <div>search!</div>
+      <SearchBar setSearchBarState={setSearchBarState} />
+      <DisplayData data={searchedData} removeData={removeData} />
     </>
   );
 }

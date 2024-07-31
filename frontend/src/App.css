@@ -45,7 +45,7 @@
   width: 100%;
 }
 
-.results {
+.dataObject {
   color: #7851a9;
   padding: 1rem;
   font-weight: bold;
@@ -60,8 +60,7 @@
   border: 2px red solid;
 }
 
-.results-item {
-}
+
 
 .selected {
   background-color: #ffc107;
