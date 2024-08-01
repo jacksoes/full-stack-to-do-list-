@@ -1,4 +1,4 @@
-import DisplayData from "../display data/DisplayData";
+import DisplayData from "../../reusable components/display data/DisplayData";
 
 export default function TodayComponent({ data, removeData }) {
   function checkDateToday(dataItem) {

@@ -1,6 +1,6 @@
-import SearchBar from "../search bar/SearchBar";
-import DisplayData from "../display data/DisplayData";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import SearchBar from "../../reusable components/search bar/SearchBar";
+import DisplayData from "../../reusable components/display data/DisplayData";
+
 
 import { useState, useEffect } from "react";
 

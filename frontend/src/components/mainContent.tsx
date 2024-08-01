@@ -1,4 +1,3 @@
-import Container from "react-bootstrap/Container";
 import { useState, useEffect } from "react";
 
 import AddContent from "./side bar options/AddContent";
@@ -7,7 +6,13 @@ import UpcomingComponent from "./side bar options/UpcomingComponent";
 import SearchComponent from "./side bar options/SearchComponent";
 import ImportantComponent from "./side bar options/importantComponent";
 
-export default function MainContent({ selectedOption }) {
+import sortByDate from "../utils/sortByDate.js";
+
+interface optionProps {
+  selectedOption: string;
+}
+
+const MainContent: React.FC<optionProps> = ({ selectedOption }) => {
   const sidebarMapping = {
     add: AddContent,
     today: TodayComponent,
@@ -17,13 +22,6 @@ export default function MainContent({ selectedOption }) {
   };
 
   const [data, setData] = useState([]);
-
-  function sortByDate(objArr) {
-    const sortedData = objArr.sort(
-      (a, b) => new Date(a.date) - new Date(b.date)
-    );
-    return sortedData;
-  }
 
   const [updateTrigger, setUpdateTrigger] = useState(0);
 
@@ -64,14 +62,16 @@ export default function MainContent({ selectedOption }) {
       .catch((err) => console.log(err));
   };
 
-  let Content = () => {
-    return <div> error not found</div>;
-  };
-
-  Content =
+  let Content =
     sidebarMapping[selectedOption] ||
     (() => {
-      return <AddContent />;
+      return (
+        <UpcomingComponent
+          removeData={removeData}
+          data={sortedData}
+          handleUpdate={handleUpdate}
+        />
+      );
     });
 
   const sortedData = sortByDate(data);
@@ -89,4 +89,6 @@ export default function MainContent({ selectedOption }) {
       </div>
     </>
   );
-}
+};
+
+export default MainContent;

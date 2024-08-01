@@ -1,13 +1,16 @@
+import DisplayData from "../../reusable components/display data/DisplayData";
 import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+
 import { useState } from "react";
 
-import DisplayData from "../display data/DisplayData";
+interface AddContentProps{
+  removeData: (index: number) => void;
+  handleUpdate: (index: void) => void;
+}
 
-export default function AddContent({ removeData, handleUpdate }) {
+const AddContent: React.FC<AddContentProps> = ({ removeData, handleUpdate }) => {
   const [tasks, setTasks] = useState([]);
 
   const removeTask = (index) => {
@@ -29,6 +32,7 @@ export default function AddContent({ removeData, handleUpdate }) {
       const dateInput = event.target[1].value;
       const importantInput = checked.toString();
 
+      //interface for tasks
       setTasks([
         ...tasks,
         {
@@ -62,7 +66,7 @@ export default function AddContent({ removeData, handleUpdate }) {
 
     return (
       <>
-        <Container className="d-flex justify-content-center crest">
+        <Container className="d-flex justify-content-center">
           <Form className="form-buffer" onSubmit={addTask}>
             <Form.Group className="mb-3" controlId="Task">
               <Form.Label>Task:</Form.Label>
@@ -100,3 +104,6 @@ export default function AddContent({ removeData, handleUpdate }) {
     </>
   );
 }
+
+
+export default AddContent;

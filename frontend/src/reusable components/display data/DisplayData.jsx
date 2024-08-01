@@ -1,4 +1,6 @@
+import "./DisplayData.css";
 import { Container, Row, Col, Button } from "react-bootstrap";
+
 export default function DisplayData({data, removeData}){
     const dataMapping = data.map((dataObject, index) => (
         <Container

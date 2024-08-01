@@ -43,5 +43,3 @@ const App: React.FC = () => {
 
 export default App;
 
-//one div 20% sideBar
-//one div 80% mainContent

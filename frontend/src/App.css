@@ -45,23 +45,6 @@
   width: 100%;
 }
 
-.dataObject {
-  color: #7851a9;
-  padding: 1rem;
-  font-weight: bold;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19),
-    0 -4px 8px 0 rgba(0, 0, 0, 0.2), 0 -6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-.purple-border {
-  border: 2px #7851a9 solid;
-}
-.red-border {
-  border: 2px red solid;
-}
-
-
-
 .selected {
   background-color: #ffc107;
 }
