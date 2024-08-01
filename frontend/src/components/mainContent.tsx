@@ -7,6 +7,13 @@ import SearchComponent from "./side bar options/SearchComponent";
 import ImportantComponent from "./side bar options/importantComponent";
 
 import sortByDate from "../utils/sortByDate.js";
+import getData from "../utils/getData.js";
+
+interface task{
+  task: string;
+  date: string;
+  important: string;
+}
 
 interface optionProps {
   selectedOption: string;
@@ -21,23 +28,18 @@ const MainContent: React.FC<optionProps> = ({ selectedOption }) => {
     important: ImportantComponent,
   };
 
-  const [data, setData] = useState([]);
+  
 
-  const [updateTrigger, setUpdateTrigger] = useState(0);
+  const [data, setData] = useState<task[]>([]);
+
+  const [updateTrigger, setUpdateTrigger] = useState<number>(0);
 
   const handleUpdate = () => {
     setUpdateTrigger((prev) => prev + 1);
   };
 
   useEffect(() => {
-    fetch("http://localhost:3000/task")
-      .then((response) => response.json())
-      .then((data) => {
-        setData(data);
-      })
-      .catch((error) =>
-        console.error("error retrieving tasks to mainComponent:", error)
-      );
+    getData("http://localhost:3000/task", setData);
   }, [updateTrigger]);
 
   const removeData = (index) => {
