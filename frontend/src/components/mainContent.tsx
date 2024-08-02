@@ -7,7 +7,7 @@ import SearchComponent from "./side bar options/SearchComponent";
 import ImportantComponent from "./side bar options/importantComponent";
 
 import sortByDate from "../utils/sortByDate.js";
-import getData from "../utils/getData.js";
+import getData from "../utils/getData.ts";
 
 interface task{
   task: string;
@@ -42,7 +42,7 @@ const MainContent: React.FC<optionProps> = ({ selectedOption }) => {
     getData("http://localhost:3000/task", setData);
   }, [updateTrigger]);
 
-  const removeData = (index) => {
+  const removeData = (index: number) => {
     setData((d) => d.filter((_, i) => i !== index));
 
     fetch("http://localhost:3000/taskRemove", {
@@ -64,7 +64,7 @@ const MainContent: React.FC<optionProps> = ({ selectedOption }) => {
       .catch((err) => console.log(err));
   };
 
-  let Content =
+  const Content =
     sidebarMapping[selectedOption] ||
     (() => {
       return (
