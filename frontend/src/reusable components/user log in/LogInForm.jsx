@@ -5,7 +5,7 @@ import Container from "react-bootstrap/Container";
 
 const LogInForm = () => {
   return (
-    <Container>
+    <Container className="d-flex justify-content-center">
       <Form className="form-structure">
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
@@ -23,7 +23,7 @@ const LogInForm = () => {
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
         <Button variant="warning" type="submit">
-          Submit
+          Log In
         </Button>
       </Form>
     </Container>
