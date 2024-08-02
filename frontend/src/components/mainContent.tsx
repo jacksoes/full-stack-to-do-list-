@@ -4,7 +4,8 @@ import AddContent from "./side bar options/AddContent";
 import TodayComponent from "./side bar options/TodayComponent";
 import UpcomingComponent from "./side bar options/UpcomingComponent";
 import SearchComponent from "./side bar options/SearchComponent";
-import ImportantComponent from "./side bar options/importantComponent";
+import ImportantComponent from "./side bar options/importantComponent.tsx";
+import LogInSection from "./side bar options/LogInSection.tsx";
 
 import sortByDate from "../utils/sortByDate.js";
 import getData from "../utils/getData.ts";
@@ -26,6 +27,7 @@ const MainContent: React.FC<optionProps> = ({ selectedOption }) => {
     upcoming: UpcomingComponent,
     search: SearchComponent,
     important: ImportantComponent,
+    login: LogInSection
   };
 
   

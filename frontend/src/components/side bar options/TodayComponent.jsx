@@ -13,6 +13,6 @@ export default function TodayComponent({ data, removeData }) {
     else return false;
   }
 
-  const filteredData = data.filter((d) => checkDateToday(d) === true);
-  return <DisplayData data={filteredData} removeData={removeData} />;
+  const filteredDataToday = data.filter((d) => checkDateToday(d) === true);
+  return <DisplayData data={filteredDataToday} removeData={removeData} />;
 }

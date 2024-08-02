@@ -11,7 +11,7 @@ export default function sideBar({ setSelectedContent, login, handleLogIn }) {
     "search",
     "important",
   ];
-  const [highlightedChoice, setHighlightedChoice] = useState("");
+  const [highlightedChoice, setHighlightedChoice] = useState(-1);
 
   function ProfileSection() {
     return (

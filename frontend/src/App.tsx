@@ -4,15 +4,18 @@ import SideBar from "./components/sideBar";
 import MainContent from "./components/mainContent";
 
 const App: React.FC = () => {
-  type optionType = "search" | "inbox" | "to do";
+  //type optionType = "search" | "inbox" | "to do";
 
-  const setContent = (optionSelected: optionType) => {
+  const setContent = (optionSelected) => {
     setSelectedButton(optionSelected);
   };
 
   const handleLogIn = () => {
-    if (!isLoggedIn) logIn();
-    else logOut();
+    setSelectedButton("login");
+
+    
+    //if (!isLoggedIn) logIn();
+    //else logOut();
 
     function logIn() {
       setIsLoggingIn(true);
@@ -23,7 +26,7 @@ const App: React.FC = () => {
     }
   };
 
-  const [selectedButton, setSelectedButton] = useState<optionType>();
+  const [selectedButton, setSelectedButton] = useState();
 
   const [isLoggedIn, setIsLoggingIn] = useState<boolean>(false);
 

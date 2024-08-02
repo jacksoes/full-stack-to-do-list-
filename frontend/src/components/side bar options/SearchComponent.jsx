@@ -11,7 +11,7 @@ export default function SearchComponent({ data, removeData }) {
 
     useEffect(() => {
         setSearchedData(data.filter(d => d.task.indexOf(searchBarState) !== -1))
-    }, [searchBarState, data])
+    }, [searchBarState, removeData])
 
   return (
     <>
